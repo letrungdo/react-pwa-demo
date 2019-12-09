@@ -6,8 +6,8 @@ Ref:
 - https://appdividend.com/2018/03/14/how-to-build-progressive-web-application-using-react-js/
 
 ### Step 1: Register a Service Worker
-##### Create a new worker.js file in the public folder (public/worker.js) and add the following code:
-```
+##### 1.1 Create a new worker.js file in the public folder (public/worker.js) and add the following code:
+```typescript
 var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
@@ -57,8 +57,8 @@ this.addEventListener('activate', event => {
   );
 });
 ```
-##### Update your index.html file in the public folder (public/index.html) to check if the client’s browser supports service workers (lines 17–31):
-```xml
+##### 1.2 Update your index.html file in the public folder (public/index.html) to check if the client’s browser supports service workers (lines 17–31):
+```typescript
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,9 +93,9 @@ this.addEventListener('activate', event => {
   </body>
 </html>
 ```
-##### Now, update line 12 of index.js in the src folder (src/index.js) from serviceWorker.unregister() to serviceWorker.register().
+##### 1.3 Now, update line 12 of index.js in the src folder (src/index.js) from serviceWorker.unregister() to serviceWorker.register().
 
-```
+```typescript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -111,7 +111,7 @@ serviceWorker.register();
 ```
 ### Step 2: Try reloading your React app without internet connection — when JavaScript is not available.
 In order to make sure your React app renders styling and works without any JavaScript loaded, add lines 13–45 and 50–57 (to your index.html file in the public folder (public/index.html).
-```html
+```typescript
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -193,7 +193,7 @@ Update the "short_name", "icons" array in the manifest.json file in the public f
 
 ### Step 4: Tell the browser it’s a PWA
 Add the following code inside <head> tag in the index.html file
-```xml
+```html
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
 ```
