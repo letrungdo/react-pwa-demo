@@ -111,7 +111,7 @@ serviceWorker.register();
 ```
 ### Step 2: Try reloading your React app without internet connection — when JavaScript is not available.
 In order to make sure your React app renders styling and works without any JavaScript loaded, add lines 13–45 and 50–57 (to your index.html file in the public folder (public/index.html).
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -193,7 +193,7 @@ Update the "short_name", "icons" array in the manifest.json file in the public f
 
 ### Step 4: Tell the browser it’s a PWA
 Add the following code inside <head> tag in the index.html file
-```
+```xml
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
 ```
