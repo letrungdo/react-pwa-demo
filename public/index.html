@@ -73,11 +73,57 @@
         Loading...
       </p>
     </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-messaging.js"></script>
     <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAVR454NcaEuKgoIHenyGvCEVklNWl2BsA",
+        authDomain: "reactpwa-a86f7.firebaseapp.com",
+        databaseURL: "https://reactpwa-a86f7.firebaseio.com",
+        projectId: "reactpwa-a86f7",
+        storageBucket: "reactpwa-a86f7.appspot.com",
+        messagingSenderId: "586620529130",
+        appId: "1:586620529130:web:e58d5c8f3cf7f1a7a5aa93",
+        measurementId: "G-RPLFBEXTYG"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const messaging = firebase.messaging();
+
+      // serviceWorker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('worker.js').then(function(registration) {
             console.log('Worker registration successful', registration.scope);
+            messaging.useServiceWorker(registration);
+
+            messaging.requestPermission()
+            .then(async function() {
+              const token = await messaging.getToken();
+              console.log('token: ', token);
+            })
+            .catch(function(err) {
+              console.log("Unable to get permission to notify.", err);
+            });
+            messaging.onMessage((payload) => {
+            const title = payload.notification.title;
+            const options = {
+                body: payload.notification.body,
+                icon: payload.notification.icon,
+                actions: [
+                    {
+                        action: payload.fcmOptions.link,
+                        title: 'AAAAA AAA'
+                    }
+                ]
+            };
+            registration.showNotification(title, options);           
+        });
+
+
           }, function(err) {
             console.log('Worker registration failed', err);
           }).catch(function(err) {

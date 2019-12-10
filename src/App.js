@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import { messaging } from "./init-fcm";
 
 const NavBar = () => (
   <div className="navbar">
@@ -29,15 +30,29 @@ const CompletedTasks = () => (
   <Template title="Completed Tasks" status="Completed" />
 );
 
-function App() {
-  return (
-    <BrowserRouter>
-      <div>
-        <Route exact path="/" component={CurrentTasks} />
-        <Route path="/completed" component={CompletedTasks} />
-      </div>
-    </BrowserRouter>
-  );
+class App extends Component {
+  // async componentDidMount() {
+  //   messaging.requestPermission()
+  //     .then(async function() {
+  //       const token = await messaging.getToken();
+  //       console.log('token: ', token);
+  //     })
+  //     .catch(function(err) {
+  //       console.log("Unable to get permission to notify.", err);
+  //     });
+  //   navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+  // }
+
+  render (){
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={CurrentTasks} />
+          <Route path="/completed" component={CompletedTasks} />
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
