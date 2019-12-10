@@ -1,10 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### - PWA official docs: https://developers.google.com/web/ilt/pwa?hl=en
+
 ## Transform a React App into a Progressive Web App (PWA)
-Ref: 
+### Ref: 
 - https://medium.com/@toricpope/transform-a-react-app-into-a-progressive-web-app-pwa-dea336bd96e6
 - https://appdividend.com/2018/03/14/how-to-build-progressive-web-application-using-react-js/
 - https://pusher.com/tutorials/pwa-react
+
+### Performance Best Practice:
+- https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3
+- https://addyosmani.com/blog/progressive-web-apps-with-react/
+- React => Preact: https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
+
+### ================================================================================================
 
 ### Step 1: Register a Service Worker
 ##### 1.1 Create a new worker.js file in the public folder (public/worker.js) and add the following code:
