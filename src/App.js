@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import { messaging } from "./init-fcm";
 
 const NavBar = () => (
   <div className="navbar">
